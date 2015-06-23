@@ -12,8 +12,11 @@ ADD postgresql-9.4-1201.jdbc41.jar ${postgres_module_dir}
 ENV config_dir=/opt/jboss/wildfly/standalone/configuration/
 ADD standalone.xml ${config_dir}
 
+USER root
+RUN ln -sf /opt/jboss/wildfly/standalone/deployments /deployments
+
 # define the deployments directory as a volume that can be mounted
-VOLUME /opt/jboss/wildfly/standalone/deployments
+VOLUME /deployments
 
 # Add a user named 'admin' 
 #RUN /opt/jboss/wildfly/bin/add-user.sh -a admin -p admin --silent

@@ -146,12 +146,12 @@
                         <password>sa</password>
                     </security>
                 </datasource>
-                <datasource jndi-name="java:jboss/datasources/PostgreSQLDS" use-java-context="true" pool-name="PostgreSQLDS">
-                    <connection-url>jdbc:postgresql://${env.POSTGRES_PORT_5432_TCP_ADDR}:${env.POSTGRES_PORT_5432_TCP_PORT}/postgres</connection-url>
+                <datasource jndi-name="java:jboss/datasources/db" use-java-context="true" pool-name="db">
+                    <connection-url>jdbc:postgresql://${env.DB_PORT_5432_TCP_ADDR}:${env.DB_PORT_5432_TCP_PORT}/postgres</connection-url>
                     <driver>postgresql</driver>
                     <security>
-                      <user-name>${env.POSTGRES_ENV_POSTGRES_USERNAME}</user-name>
-                      <password>${env.POSTGRES_ENV_POSTGRES_PASSWORD}</password>
+                      <user-name>${env.DB_ENV_POSTGRES_USERNAME:postgres}</user-name>
+                      <password>${env.DB_ENV_POSTGRES_PASSWORD}</password>
                     </security>
                     <validation>
                     	<check-valid-connection-sql>SELECT 1</check-valid-connection-sql>
